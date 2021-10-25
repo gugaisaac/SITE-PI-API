@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <h1>Projeto Relatorio<span class="highlight"> Salarial</span></h1>
+    </div>
+  </div>
+  <div class="dash-container">
+    <!-- Gráfico de Linhas -->
+    <div class="graph">
+      <canvas id="chartLine" style="width: 100%; height: 100%;"></canvas>
+    </div>
+
+    <!-- Gráfico de Barras -->
+    <div class="graph">
+      <canvas id="chartBar" style="width: 100%; height: 100%;"></canvas>
+    </div>
+
+    <!-- Grafico Pizza/Torta -->
+    <div class="graph">
+      <canvas id="chartPie" style="width: 100%; height: 100%;"></canvas>
+    </div>
+  </div>
+  
+</body>
+
+</html>
+
+<script>
+  // gráfico de Linha
+  var ctxLine = document.getElementById("chartLine").getContext("2d");
+  var rotulosLine = ["2011", "2012", "2013", "2014", "2015", "2016", "2017","2018","2019","2020","2021"];
+  var dataLine = [540, 622, 678, 724, 788, 880, 937, 954, 998,1045, 1100];
+  var configLine = {
+    type: 'line',
+    data: {
+      labels: rotulosLine, 
+      datasets: [
+        {
+          label: 'Temperatura Diária',
+          data: dataLine, 
+          backgroundColor: [
+            '#000000',
+            '#ff0000',
+            '#fffb00',
+            '#15ff00',
+            '#00ffea',
+            '#0026ff',
+            '#e100ff',
+            '#ff006a',
+            '#8c00ff',
+            '#0099ff',
+            '#00ff95',
+          ],
+          borderColor: [
+            '#000000',
+          ],
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  }
+  var ax_chartLine = new Chart(ctxLine, configLine);
+
+
+  // gráfico de Barras
+  var ctxBar = document.getElementById("chartBar").getContext("2d");
+  var rotulosBar = ["Norte", "Nordeste", "Sudeste", "Sul", "Centro-Oeste"];
+  var dataBar = [1711, 1539, 2585, 2499, 2498];
+  var configBar = {
+    type: 'bar',
+    data: {
+      labels: rotulosBar, 
+      datasets: [
+        {
+          label: 'Quantidade Espécies',
+          data: dataBar, 
+          backgroundColor: [
+            '#FF0000',
+            '#FFFF00',
+            '#FF00FF',
+            '#00FFFF',
+            '#990099',
+            '#999900',
+            '#F0F000',
+            '#650022',
+          ],
+          borderColor: [
+            '#000000',
+           
+          ],
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  }
+  var ax_chartBar = new Chart(ctxBar, configBar); 
+
+
+  // gráfico de Pizza/Torta
+  var ctxPie = document.getElementById("chartPie").getContext("2d");
+  var rotulosPie = ["Norte", "Nordeste", "Sudeste", "Sul", "Centro-Oeste"];
+  var dataPie = [10.6, 13.6, 11.4, 6.8, 9.3];
+  var configPie = {
+    type: 'pie',
+    data: {
+      labels: rotulosPie, 
+      datasets: [
+        {
+          label: 'Título do Gráfico',
+          data: dataPie, 
+          backgroundColor: [
+            '#FF0000',
+            '#FFFF00',
+            '#FF00FF',
+            '#00FFFF',
+            '#990099',
+            '#999900',
+            '#F0F000',
+            '#650022',
+          ],
+          borderColor: [
+            '#000000',
+           ],
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  }
+  var ax_chartPie = new Chart(ctxPie, configPie); 
+
+
+</script>
